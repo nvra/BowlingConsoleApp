@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BowlingConsoleApp", "BowlingConsoleApp\BowlingConsoleApp.csproj", "{C10EDCDB-E199-4710-9519-A395C1F0E95E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingConsoleApp", "BowlingConsoleApp\BowlingConsoleApp.csproj", "{C10EDCDB-E199-4710-9519-A395C1F0E95E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{051C80C9-8F41-4D4C-8AC7-DF4DD8D07DE2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\README.md = ..\..\..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
