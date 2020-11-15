@@ -64,7 +64,7 @@ namespace BowlingConsoleApp
 
             foreach (var player in players)
             {
-                Console.WriteLine($"Id : {player.id}    Name : {player.name}");
+                Console.WriteLine($"Id : {player.Id}    Name : {player.Name}");
             }
         }
 
@@ -97,7 +97,7 @@ namespace BowlingConsoleApp
             var requestJson = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
 
             using var httpResponse =
-                await _client.PostAsync("http://localhost:64454/api/FrameThrowScore", requestJson);
+                await _client.PostAsync("http://localhost:64454/api/v1/FrameThrowScore", requestJson);
 
             httpResponse.EnsureSuccessStatusCode();
         }
@@ -108,17 +108,17 @@ namespace BowlingConsoleApp
             var scores = await JsonSerializer.DeserializeAsync<BowlingResponse>(await responseTask);
 
             Console.WriteLine();
-            Console.WriteLine($"Player Name : {scores.playerName}");
-            Console.WriteLine($"Game Id : {scores.gameId}");
-            Console.WriteLine($"Game Total Score : {scores.totalScore}");
+            Console.WriteLine($"Player Name : {scores.PlayerName}");
+            Console.WriteLine($"Game Id : {scores.GameId}");
+            Console.WriteLine($"Game Total Score : {scores.TotalScore}");
 
-            foreach (var frame in scores.frames)
+            foreach (var frame in scores.Frames)
             {
                 Console.WriteLine();
-                Console.WriteLine($"Frame {frame.frameNum} Total Score : {frame.totalScore}");
-                foreach (var thrw in frame.throws)
+                Console.WriteLine($"Frame {frame.FrameNum} Total Score : {frame.TotalScore}");
+                foreach (var thrw in frame.Throws)
                 {
-                    Console.WriteLine($"        Throw {thrw.throwNum} Score : {thrw.score}");
+                    Console.WriteLine($"        Throw {thrw.ThrowNum} Score : {thrw.Score}");
                 }
             }
         }
@@ -159,19 +159,14 @@ namespace BowlingConsoleApp
                             break;
                         }
                     }
-                    else 
+                    else
                     {
-                        if (score == 10 && thrw == 1) // extra chance for frame10 if all the pins are cleared.
-                        {
-                            thrw++;
-                        }
-                        else if (totalScore != 10 && thrw == 2)
+                        if (totalScore < 10 && thrw == 2)
                         {
                             break;
                         }
                     }
                 }
-
                 await GetScores(gameId);
             }
 
