@@ -97,7 +97,7 @@ namespace BowlingConsoleApp
             var requestJson = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
 
             using var httpResponse =
-                await _client.PostAsync("http://localhost:64454/api/FrameThrowScore", requestJson);
+                await _client.PostAsync("http://localhost:64454/api/v1/FrameThrowScore", requestJson);
 
             httpResponse.EnsureSuccessStatusCode();
         }
